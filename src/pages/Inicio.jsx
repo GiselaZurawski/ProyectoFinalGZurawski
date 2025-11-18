@@ -1,10 +1,11 @@
-import Productos from "../components/Productos";
+import Carrusel from "../components/Carrusel";
+/*import Productos from "../pages/Productos";
 import Carrito from "./Carrito";
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-
+*/
 const Inicio = () => {
-	const [productos, setProductos] = useState([]);
+	/*const [productos, setProductos] = useState([]);
 	const [carrito, setCarrito] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
@@ -50,9 +51,12 @@ const Inicio = () => {
 	if (loading) return <div>Loading...</div>;
 
 	if (error) return <p> {error}</p>;
-
+	*/
 	return (
-		<Container>
+		<div style={{ background: "#fdf1aaff" }}>
+			<Carrusel />
+		</div>
+		/*<Container>
 			<h3 className="text-center mt-3" style={{ color: "#5c4473ff" }}>
 				Productos:
 			</h3>
@@ -64,6 +68,7 @@ const Inicio = () => {
 				vaciarCarrito={vaciarCarrito}
 			/>
 		</Container>
+		*/
 	);
 };
 

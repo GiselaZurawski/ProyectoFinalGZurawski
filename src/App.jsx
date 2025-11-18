@@ -4,9 +4,11 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Inicio from "./pages/Inicio";
 import Login from "./pages/Login";
-import Productos from "./components/Productos";
+import Admin from "./pages/Admin";
+import Productos from "./pages/Productos";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProductoDetalle from "./components/ProductoDetalle";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
 	return (
@@ -17,6 +19,14 @@ function App() {
 				<Route path="/Productos" element={<Productos />} />
 				<Route path="/Login" element={<Login />} />
 				<Route path="/Productos/:id" element={<ProductoDetalle />} />
+				<Route
+					path="/Admin"
+					element={
+						<PrivateRoute>
+							<Admin />
+						</PrivateRoute>
+					}
+				/>
 			</Routes>
 			<Footer />
 		</div>

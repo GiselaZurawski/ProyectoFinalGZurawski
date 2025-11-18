@@ -1,9 +1,32 @@
-import { Form, Button, Container, Row, Col, Card } from "react-bootstrap";
+import {
+	Form,
+	Button,
+	Container,
+	Row,
+	Col,
+	Card,
+	Alert,
+} from "react-bootstrap";
+import { useAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-const Login = () => {
+const Login = (userData) => {
+	const { login } = useAuth();
+	const navigate = useNavigate();
+
+	const [userName, setUserName] = useState("");
+	const [password, setPassword] = useState("");
+	const [error, setError] = useState("");
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		alert("login enviado");
+		const success = login(userName, password);
+		if (success) {
+			navigate("/Admin");
+		} else {
+			setError("usuario o contraseña incorrecta");
+		}
 	};
 
 	return (
@@ -18,6 +41,8 @@ const Login = () => {
 									<Form.Label>Usuario</Form.Label>
 									<Form.Control
 										type="text"
+										value={userName}
+										onChange={(e) => setUserName(e.target.value)}
 										placeholder="Ingrese su usuario"
 										required
 									/>
@@ -27,6 +52,8 @@ const Login = () => {
 									<Form.Label>Contraseña</Form.Label>
 									<Form.Control
 										type="password"
+										value={password}
+										onChange={(e) => setPassword(e.target.value)}
 										placeholder="Ingrese su contraseña"
 										required
 									/>
@@ -38,6 +65,11 @@ const Login = () => {
 									style={{ backgroundColor: "#8a6497ff", border: "none" }}>
 									Ingresar
 								</Button>
+								{error && (
+									<Alert variant="danger" className="mt-3">
+										{error}
+									</Alert>
+								)}
 							</Form>
 						</Card.Body>
 					</Card>
