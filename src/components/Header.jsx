@@ -1,16 +1,31 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Navbar, Nav, Container, Button } from "react-bootstrap";
+import {
+	Navbar,
+	Nav,
+	Container,
+	Button,
+	Offcanvas,
+	Badge,
+} from "react-bootstrap";
 import { useAuth } from "../context/AuthContext";
+import { useState, useContext } from "react";
+import Carrito from "./Carrito";
+import { CarritoContext } from "../context/CarritoContext";
 import "./styles.css";
 
 const Header = () => {
 	const { token, user, logout } = useAuth();
 	const navigate = useNavigate();
+	const [show, setShow] = useState(false);
 
 	const handleLogout = () => {
 		logout();
 		navigate("/login");
 	};
+
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+	const { cantidadTotalCarrito } = useContext(CarritoContext);
 
 	return (
 		<Navbar
@@ -70,13 +85,27 @@ const Header = () => {
 						)}
 
 						<Nav.Link
-							as={Link}
-							to={"/ProductosCarrito"}
-							className="me-4 text-dark">
+							onClick={handleShow}
+							className="me-4 text-dark position-relative">
 							<i className="fas fa-shopping-cart"></i>
+							<Badge
+								bg="danger"
+								pill
+								className="position-absolute top-0 start-100 translate-middle">
+								{cantidadTotalCarrito()}
+							</Badge>
 						</Nav.Link>
 					</Nav>
 				</Navbar.Collapse>
+
+				<Offcanvas show={show} onHide={handleClose} placement="end">
+					<Offcanvas.Header closeButton>
+						<Offcanvas.Title>Carrito</Offcanvas.Title>
+					</Offcanvas.Header>
+					<Offcanvas.Body>
+						<Carrito />
+					</Offcanvas.Body>
+				</Offcanvas>
 			</Container>
 		</Navbar>
 	);

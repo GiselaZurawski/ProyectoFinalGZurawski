@@ -109,7 +109,6 @@ const ProductosCRUD = () => {
 						<th>Producto</th>
 						<th>Descripción</th>
 						<th>Precio</th>
-						<th>Stock</th>
 						<th>Imagen</th>
 						<th>Acciones</th>
 					</tr>
@@ -120,7 +119,6 @@ const ProductosCRUD = () => {
 							<td>{prod.nombre}</td>
 							<td>{prod.descripcion}</td>
 							<td>${Number(prod.precio).toFixed(2)}</td>
-							<td>{prod.stock}</td>
 							<td>
 								{prod.image?.startsWith("http") ? (
 									<img
@@ -189,16 +187,6 @@ const ProductosCRUD = () => {
 								type="number"
 								value={form.precio}
 								onChange={(e) => setForm({ ...form, precio: e.target.value })}
-								required
-							/>
-						</Form.Group>
-
-						<Form.Group className="mb-2">
-							<Form.Label>Stock</Form.Label>
-							<Form.Control
-								type="number"
-								value={form.stock}
-								onChange={(e) => setForm({ ...form, stock: e.target.value })}
 								required
 							/>
 						</Form.Group>
