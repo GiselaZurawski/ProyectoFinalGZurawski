@@ -17,6 +17,7 @@ export const CarritoProvider = ({ children }) => {
 			}
 			return [...prevCarrito, { ...producto, cantidad: 1 }];
 		});
+		alert("producto agregado");
 	};
 
 	const eliminarDelCarrito = (id) => {

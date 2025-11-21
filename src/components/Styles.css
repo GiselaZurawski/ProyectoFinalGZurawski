@@ -1,11 +1,60 @@
-.toggle-blanco {
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+/* Navbar general */
+.navbar-custom {
+	height: 7rem;
+	transition: all 0.3s ease;
 }
 
-.style-detail {
-	max-width: 600px;
-	padding: 1.5rem;
-	border-radius: 12px;
-	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-	background-color: #f2e6f6 !important;
+/* Logo */
+.logo-img {
+	width: 7rem;
+	transition: width 0.3s ease;
+}
+
+/* Badge del carrito */
+.cart-badge {
+	font-size: 0.8rem;
+	top: 0;
+	right: 0;
+	transform: translate(50%, -50%);
+}
+
+/* --- Ajustes responsivos --- */
+
+/* Pantallas pequeñas (celulares) */
+@media (max-width: 576px) {
+	.navbar-custom {
+		height: auto;
+		padding: 0.5rem 1rem;
+	}
+
+	.logo-img {
+		width: 4rem; /* Logo más chico en móviles */
+	}
+
+	.navbar-brand span {
+		font-size: 1rem; /* Texto más pequeño */
+	}
+
+	.cart-badge {
+		font-size: 0.65rem; /* más pequeño */
+		top: 0.2rem; /* más cerca del ícono */
+		right: 0.2rem; /* ajustado al borde */
+		transform: none; /* evita que se desplace demasiado */
+	}
+
+	.nav-link,
+	.btn {
+		font-size: 0.9rem; /* Links y botones más compactos */
+	}
+}
+
+/* Pantallas medianas (tablets) */
+@media (min-width: 577px) and (max-width: 768px) {
+	.logo-img {
+		width: 5rem;
+	}
+
+	.navbar-brand span {
+		font-size: 1.1rem;
+	}
 }

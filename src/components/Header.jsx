@@ -30,15 +30,17 @@ const Header = () => {
 	return (
 		<Navbar
 			expand="lg"
-			className="bg-white text-dark mt-2"
-			style={{ height: "7rem" }}>
+			className="bg-white text-dark mt-2 navbar-custom"
+			//style={{ height: "7rem" }}
+		>
 			<Container>
 				<Navbar.Brand as={Link} to={"/"}>
 					<div className="d-flex align-items-center">
 						<img
+							className="logo-img"
 							src="src/assets/img/logo_ami.jpg"
 							alt="logo"
-							style={{ width: "7rem" }}
+							//style={{ width: "7rem" }}
 						/>
 						<span
 							className="ms-3"
@@ -51,11 +53,7 @@ const Header = () => {
 						</span>
 					</div>
 				</Navbar.Brand>
-
-				<Navbar.Toggle
-					aria-controls="basic-navbar-nav"
-					className="toggle-blanco"
-				/>
+				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ms-auto">
 						<Nav.Link as={Link} to={"/"} className="me-4 text-dark">
@@ -88,10 +86,7 @@ const Header = () => {
 							onClick={handleShow}
 							className="me-4 text-dark position-relative">
 							<i className="fas fa-shopping-cart"></i>
-							<Badge
-								bg="danger"
-								pill
-								className="position-absolute top-0 start-100 translate-middle">
+							<Badge bg="danger" pill className="position-absolute cart-badge">
 								{cantidadTotalCarrito()}
 							</Badge>
 						</Nav.Link>
