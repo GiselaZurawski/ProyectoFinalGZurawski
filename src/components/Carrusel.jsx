@@ -28,7 +28,7 @@ function Carrusel() {
 
 				<Carousel.Item>
 					<img
-						className="d-block w-100"
+						className="d-block w-100 img-fluid"
 						src={erizo}
 						alt="adorable erizo"
 						style={{ height: "37rem", objectFit: "cover" }}
@@ -41,9 +41,9 @@ function Carrusel() {
 
 				<Carousel.Item>
 					<img
-						className="d-block w-100"
-						src="src/assets/img/tortuguita.avif"
-						alt={tortuguita}
+						className="d-block w-100 img-fluid"
+						src={tortuguita}
+						alt="encantadora tortuga de mar"
 						style={{ height: "37rem", objectFit: "cover" }}
 					/>
 					<Carousel.Caption>

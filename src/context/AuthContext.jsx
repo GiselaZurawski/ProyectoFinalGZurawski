@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
 	});
 
 	const login = (userName, password) => {
-		if (userName === "Gisela" && password === "GiselaZ") {
+		if (userName === "admin" && password === "1234") {
 			const token =
 				"IhD1V8jftj68ucp14FZ74Pe52HbJ4mKO5CgLMbdb4PXzsCaZQas0rhT7Ttt91h8D";
 			const userData = { name: userName, role: "admin" };
