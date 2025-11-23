@@ -12,7 +12,7 @@ import { useState, useContext } from "react";
 import Carrito from "./Carrito";
 import { CarritoContext } from "../context/CarritoContext";
 import "./styles.css";
-import logo_ami from "../assets/img/logo_ami.jpg";
+//import logo_ami from "../assets/img/logo_ami.jpg";
 
 const Header = () => {
 	const { token, user, logout } = useAuth();
@@ -35,7 +35,7 @@ const Header = () => {
 					<div className="d-flex align-items-center">
 						<img
 							className="logo-img"
-							src={logo_ami}
+							src="/logo_ami.jpg"
 							alt="logo"
 							//style={{ width: "7rem" }}
 						/>
