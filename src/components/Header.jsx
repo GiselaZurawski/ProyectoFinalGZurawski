@@ -12,6 +12,7 @@ import { useState, useContext } from "react";
 import Carrito from "./Carrito";
 import { CarritoContext } from "../context/CarritoContext";
 import "./styles.css";
+import logo_ami from "../assets/img/logo_ami.jpg";
 
 const Header = () => {
 	const { token, user, logout } = useAuth();
@@ -28,17 +29,13 @@ const Header = () => {
 	const { cantidadTotalCarrito } = useContext(CarritoContext);
 
 	return (
-		<Navbar
-			expand="lg"
-			className="bg-white text-dark mt-2 navbar-custom"
-			//style={{ height: "7rem" }}
-		>
+		<Navbar expand="lg" className="bg-white text-dark mt-2 navbar-custom">
 			<Container>
 				<Navbar.Brand as={Link} to={"/"}>
 					<div className="d-flex align-items-center">
 						<img
 							className="logo-img"
-							src="src/assets/img/logo_ami.jpg"
+							src={logo_ami}
 							alt="logo"
 							//style={{ width: "7rem" }}
 						/>
