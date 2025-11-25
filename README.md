@@ -44,3 +44,5 @@ ProyectoFinalGZurawski/
 └── README.md
 
 # usuario y contraseña de Admin: usuario: "admin", password: "1234"
+
+# usuraio y contraseña de user: usuario: "cliente", password: "cliente"

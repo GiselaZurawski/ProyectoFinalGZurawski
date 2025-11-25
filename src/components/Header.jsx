@@ -45,7 +45,7 @@ const Header = () => {
 						</span>
 					</div>
 				</Navbar.Brand>
-				<Navbar.Toggle aria-controls="basic-navbar-nav" />
+
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ms-auto">
 						<Nav.Link as={Link} to={"/"} className="me-4 text-dark">
@@ -92,7 +92,7 @@ const Header = () => {
 						)}
 					</Nav>
 				</Navbar.Collapse>
-
+				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				{/* Offcanvas del carrito */}
 				<Offcanvas show={show} onHide={handleClose} placement="end">
 					<Offcanvas.Header closeButton>
