@@ -8,6 +8,7 @@ import Productos from "./pages/Productos";
 import { Route, Routes } from "react-router-dom";
 import ProductoDetalle from "./components/ProductoDetalle";
 import PrivateRoute from "./components/PrivateRoute";
+import Carrito from "./components/Carrito";
 
 function App() {
 	return (
@@ -23,6 +24,14 @@ function App() {
 					element={
 						<PrivateRoute>
 							<Admin />
+						</PrivateRoute>
+					}
+				/>
+				<Route
+					path="/Carrito"
+					element={
+						<PrivateRoute role="user">
+							<Carrito />
 						</PrivateRoute>
 					}
 				/>

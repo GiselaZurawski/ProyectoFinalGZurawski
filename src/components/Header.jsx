@@ -12,7 +12,7 @@ import { useState, useContext } from "react";
 import Carrito from "./Carrito";
 import { CarritoContext } from "../context/CarritoContext";
 import "./styles.css";
-//import logo_ami from "../assets/img/logo_ami.jpg";
+import logo_ami from "../assets/img/logo_ami.jpg";
 
 const Header = () => {
 	const { token, user, logout } = useAuth();
@@ -33,12 +33,7 @@ const Header = () => {
 			<Container>
 				<Navbar.Brand as={Link} to={"/"}>
 					<div className="d-flex align-items-center">
-						<img
-							className="logo-img"
-							src="/logo_ami.jpg"
-							alt="logo"
-							//style={{ width: "7rem" }}
-						/>
+						<img className="logo-img" src={logo_ami} alt="logo" />
 						<span
 							className="ms-3"
 							style={{
@@ -59,13 +54,15 @@ const Header = () => {
 						<Nav.Link as={Link} to={"/Productos"} className="me-4 text-dark">
 							Productos
 						</Nav.Link>
-						{/* Condición: si está logueado y es admin */}
+
+						{/* Solo admin */}
 						{token && user?.role === "admin" && (
 							<Nav.Link as={Link} to="/Admin" className="me-4 text-dark">
 								Admin
 							</Nav.Link>
 						)}
 
+						{/* Login / Logout */}
 						{!token ? (
 							<Nav.Link as={Link} to="/Login" className="me-4 text-dark">
 								Login
@@ -79,17 +76,24 @@ const Header = () => {
 							</Button>
 						)}
 
-						<Nav.Link
-							onClick={handleShow}
-							className="me-4 text-dark position-relative">
-							<i className="fas fa-shopping-cart"></i>
-							<Badge bg="danger" pill className="position-absolute cart-badge">
-								{cantidadTotalCarrito()}
-							</Badge>
-						</Nav.Link>
+						{/* Solo clientes */}
+						{token && user?.role === "user" && (
+							<Nav.Link
+								onClick={handleShow}
+								className="me-4 text-dark position-relative">
+								<i className="fas fa-shopping-cart"></i>
+								<Badge
+									bg="danger"
+									pill
+									className="position-absolute cart-badge">
+									{cantidadTotalCarrito()}
+								</Badge>
+							</Nav.Link>
+						)}
 					</Nav>
 				</Navbar.Collapse>
 
+				{/* Offcanvas del carrito */}
 				<Offcanvas show={show} onHide={handleClose} placement="end">
 					<Offcanvas.Header closeButton>
 						<Offcanvas.Title>Carrito</Offcanvas.Title>

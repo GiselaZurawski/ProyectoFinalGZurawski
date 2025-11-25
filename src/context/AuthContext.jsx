@@ -3,6 +3,12 @@ import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext();
 
+const usuarios = [
+	{ userName: "admin", password: "1234", role: "admin" },
+	{ userName: "cliente", password: "cliente", role: "user" },
+	{ userName: "invitado", password: "invitado", role: "guest" },
+];
+
 export const AuthProvider = ({ children }) => {
 	const [token, setToken] = useState(
 		() => localStorage.getItem("token") || null
@@ -14,15 +20,22 @@ export const AuthProvider = ({ children }) => {
 	});
 
 	const login = (userName, password) => {
-		if (userName === "admin" && password === "1234") {
-			const token =
-				"IhD1V8jftj68ucp14FZ74Pe52HbJ4mKO5CgLMbdb4PXzsCaZQas0rhT7Ttt91h8D";
-			const userData = { name: userName, role: "admin" };
+		// Buscar usuario en la lista
+		const usuarioEncontrado = usuarios.find(
+			(u) => u.userName === userName && u.password === password
+		);
 
-			setToken(token);
+		if (usuarioEncontrado) {
+			const fakeToken = "TOKEN_DEMO_" + usuarioEncontrado.role; // token simulado
+			const userData = {
+				name: usuarioEncontrado.userName,
+				role: usuarioEncontrado.role,
+			};
+
+			setToken(fakeToken);
 			setUser(userData);
 
-			localStorage.setItem("token", token);
+			localStorage.setItem("token", fakeToken);
 			localStorage.setItem("user", JSON.stringify(userData));
 
 			return true;

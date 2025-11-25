@@ -12,7 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const Login = (userData) => {
-	const { login } = useAuth();
+	const { login, user } = useAuth();
 	const navigate = useNavigate();
 
 	const [userName, setUserName] = useState("");
@@ -23,7 +23,11 @@ const Login = (userData) => {
 		e.preventDefault();
 		const success = login(userName, password);
 		if (success) {
-			navigate("/Admin");
+			if (user?.role === "admin") {
+				navigate("/Admin");
+			} else {
+				navigate("/Productos");
+			}
 		} else {
 			setError("usuario o contraseña incorrecta");
 		}
